@@ -1,0 +1,31 @@
+section.section
+  .container
+
+    nav.level
+      .level-left
+        nav.breadcrumb aria-label="breadcrumbs"
+          ul
+            li.is-active
+              = link_to :links do
+                span.icon.is-small
+                  i.fas.fa-home aria-hidden="true"
+                span Links
+      .level-right
+        .level-item
+          = link_to :new_link, class: 'button' do
+            span.icon
+              i.fas.fa-plus
+            span Link
+
+    table.table.is-bordered.is-striped.is-fullwidth
+      thead
+        tr
+          th Label
+          th Short URL
+          th Clicks
+      tbody
+        - @links.each do |link|
+          tr
+            td = link_to link.label, link
+            td = short_url(link.slug)
+            td = link.clicks_count

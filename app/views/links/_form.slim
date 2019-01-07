@@ -1,0 +1,42 @@
+= form_with(model: link, local: true) do |form|
+  - if link.errors.any?
+    .message
+      .message-header
+        p #{pluralize(link.errors.count, "error")} prohibited this link from being saved:
+      .message-body
+        ul
+          - link.errors.full_messages.each do |message|
+            li = message
+
+  .field.is-horizontal
+    .field-label.is-normal
+      = form.label :label, class: "label"
+    .field-body
+      .field
+        .control
+          = form.text_field :label, class: "input"
+
+  .field.is-horizontal
+    .field-label.is-normal
+      = form.label :url, "URL", class: "label"
+    .field-body
+      .field
+        .control
+          = form.text_field :url, class: "input"
+
+  .field.is-horizontal
+    .field-label.is-normal
+      = form.label :slug, class: "label"
+    .field-body
+      .field
+        .control
+          = form.text_field :slug, class: "input is-narrow"
+
+  .field.is-horizontal
+    .field-label
+    .field-body
+      .field.is-grouped
+        .control
+          = form.submit class: "button is-primary"
+        .control
+          = link_to "Cancel", @link, class: "button is-text"

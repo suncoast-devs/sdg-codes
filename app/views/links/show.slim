@@ -1,0 +1,51 @@
+section.section
+  .container
+
+    nav.level
+      .level-left
+        nav.breadcrumb aria-label="breadcrumbs"
+          ul
+            li
+              = link_to :links do
+                span.icon.is-small
+                  i.fas.fa-home aria-hidden="true"
+                span Links
+            li.is-active
+              a href="#"
+                span= @link.label
+
+      .level-right
+        .level-item
+          = link_to [:edit, @link], class: 'button' do
+            span.icon
+              i.fas.fa-edit
+            span Edit
+
+    table.table.is-striped.is-fullwidth
+      tr
+        th Created By
+        td = @link.user.name
+
+      tr
+        th Short URL
+        td = short_url @link.slug
+
+      tr
+        th URL
+        td = @link.url
+
+
+    h4.title.is-4 Clicks
+
+    table.table.is-bordered.is-striped.is-fullwidth
+      thead
+        tr
+          th Time
+          th IP
+          th Referrer
+      tbody
+        - @link.clicks.each do |click|
+          tr
+            td = click.created_at
+            td = click.ip_address
+            td = click.referrer

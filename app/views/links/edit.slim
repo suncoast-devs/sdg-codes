@@ -1,0 +1,28 @@
+section.section
+  .container
+
+    nav.level
+      .level-left
+        nav.breadcrumb aria-label="breadcrumbs"
+          ul
+            li
+              = link_to :links do
+                span.icon.is-small
+                  i.fas.fa-home aria-hidden="true"
+                span Links
+            li
+              = link_to @link do
+                span= @link.label
+
+            li.is-active
+              a href="#"
+                span Edit
+
+      .level-right
+        .level-item
+          = link_to @link, class: 'button is-danger' do
+            span.icon
+              i.fas.fa-trash
+            span Delete
+
+    = render partial: 'form', locals: { link: @link }
