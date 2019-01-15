@@ -29,3 +29,5 @@ section.section
             td = link_to link.label, link
             td = short_url(link.slug)
             td = link.clicks_count
+
+    == pagy_bulma_nav(@pagy)

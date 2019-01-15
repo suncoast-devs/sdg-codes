@@ -6,7 +6,7 @@ class LinksController < ApplicationController
 
   # GET /links
   def index
-    @links = Link.all
+    @pagy, @links = pagy(Link.all.order(created_at: :desc))
   end
 
   # GET /links/1

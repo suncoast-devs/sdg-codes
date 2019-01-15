@@ -1,0 +1,33 @@
+section.section
+  .container
+
+    nav.level
+      .level-left
+        nav.breadcrumb aria-label="breadcrumbs"
+          ul
+            li
+              = link_to :links do
+                span.icon.is-small
+                  i.fas.fa-home aria-hidden="true"
+                span Links
+
+            li.is-active
+              a href="#"
+                span All Clicks
+
+    table.table.is-bordered.is-striped.is-fullwidth
+      thead
+        tr
+          th Link
+          th Time
+          th IP
+          th Referrer
+      tbody
+        - @clicks.each do |click|
+          tr
+            td = link_to click.link.label, click.link
+            td = time_tag click.created_at, time_ago_in_words(click.created_at)
+            td = click.ip_address
+            td = click.referrer
+
+    == pagy_bulma_nav(@pagy)

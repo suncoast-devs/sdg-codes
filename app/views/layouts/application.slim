@@ -21,6 +21,7 @@ html
           .navbar-start
             - if signed_in?
               = link_to "Links", links_path, class: "navbar-item #{controller.controller_name == 'links' ? 'is-active' : ''}"
+              = link_to "Clicks", clicks_path, class: "navbar-item #{controller.controller_name == 'clicks' ? 'is-active' : ''}"
           .navbar-end
             .navbar-item
               .field.is-grouped

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :links
+  resources :clicks, only: %i[index]
 
   namespace :api do
     resources :links, only: %i[create]

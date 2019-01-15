@@ -91,6 +91,7 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
+    pagy (1.3)
     pg (1.1.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -149,6 +150,7 @@ DEPENDENCIES
   byebug
   omniauth
   omniauth-google-oauth2
+  pagy
   pg (~> 1.0)
   puma (~> 3)
   rails (~> 5.2)
