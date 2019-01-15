@@ -12,6 +12,7 @@ class HomeController < ApplicationController
       @link.clicks.create({
         ip_address: request.remote_ip,
         referrer: request.referer,
+        user_agent: request.user_agent,
         session: session.id,
       })
       redirect_to @link.url
