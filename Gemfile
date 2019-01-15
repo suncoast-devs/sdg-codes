@@ -11,5 +11,6 @@ gem "omniauth-google-oauth2"
 gem "slim"
 
 group :development do
+  gem "awesome_print"
   gem "byebug"
 end

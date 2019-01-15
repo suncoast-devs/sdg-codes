@@ -10,4 +10,18 @@ class User < ApplicationRecord
       user.save!
     end
   end
+
+  def self.from_api_key(token)
+    where(email: User.encryptor.decrypt_and_verify(token)).first
+  end
+
+  def api_key
+    User.encryptor.encrypt_and_sign(email)
+  end
+
+  def self.encryptor
+    @encryptor ||= ActiveSupport::MessageEncryptor.new(
+      Rails.application.credentials.api_token_key
+    )
+  end
 end
