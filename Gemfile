@@ -10,6 +10,7 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "pagy"
 gem "slim"
+gem "user_agent_parser"
 
 group :development do
   gem "awesome_print"

@@ -22,6 +22,7 @@ section.section
           th Time
           th IP
           th Referrer
+          th UA
       tbody
         - @clicks.each do |click|
           tr
@@ -29,5 +30,7 @@ section.section
             td = time_tag click.created_at, time_ago_in_words(click.created_at)
             td = click.ip_address
             td = click.referrer
+            td = UserAgentParser.parse(click.user_agent)
+
 
     == pagy_bulma_nav(@pagy)

@@ -34,6 +34,9 @@ section.section
         th URL
         td = @link.url
 
+      tr
+        th Click Count
+        td = @link.clicks_count
 
     h4.title.is-4 Clicks
 
@@ -43,9 +46,11 @@ section.section
           th Time
           th IP
           th Referrer
+          th UA
       tbody
-        - @link.clicks.each do |click|
+        - @link.clicks.order(created_at: :desc).each do |click|
           tr
-            td = click.created_at
+            td = time_tag click.created_at, time_ago_in_words(click.created_at)
             td = click.ip_address
             td = click.referrer
+            td = UserAgentParser.parse(click.user_agent)
