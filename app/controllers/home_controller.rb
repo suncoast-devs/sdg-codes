@@ -15,7 +15,16 @@ class HomeController < ApplicationController
         user_agent: request.user_agent,
         session: session.id,
       })
-      redirect_to @link.url
+
+      unless request.query_parameters.empty?
+        uri = URI.parse(@link.url)
+        link_params = Rack::Utils.parse_query(uri.query)
+        merged_params = request.query_parameters.merge(link_params)
+        uri.query = Rack::Utils.build_query(merged_params)
+        redirect_to uri.to_s
+      else
+        redirect_to @link.url
+      end
     else
       redirect_to "https://suncoast.io"
     end
