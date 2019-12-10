@@ -6,7 +6,13 @@ class LinksController < ApplicationController
 
   # GET /links
   def index
-    @pagy, @links = pagy(Link.all.order(created_at: :desc))
+    scope = case params[:f]
+      when 'all' then Link.all
+      when 'system' then Link.joins(:user).where(users: {email: 'hello@suncoast.io'})
+      else Link.where(user: current_user)
+    end
+
+    @pagy, @links = pagy(scope.order(created_at: :desc))
   end
 
   # GET /links/1

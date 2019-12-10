@@ -17,17 +17,32 @@ section.section
               i.fas.fa-plus
             span Link
 
+    .tabs.is-boxed
+      ul
+        li[class=(!params[:f] && "is-active")]
+          = link_to "Mine", :links
+        li[class=(params[:f] == 'all' && "is-active")]
+          = link_to "All", links_path(f: :all)
+        li[class=(params[:f] == 'system' && "is-active")]
+          = link_to "System", links_path(f: :system)
+
     table.table.is-bordered.is-striped.is-fullwidth
       thead
         tr
           th Label
           th Short URL
           th Clicks
+          th Creator
       tbody
         - @links.each do |link|
           tr
             td = link_to link.label, link
             td = short_url(link.slug)
             td = link.clicks_count
+            td 
+              - if link.user
+                = link.user.name
+              - else
+                em System
 
     == pagy_bulma_nav(@pagy)
