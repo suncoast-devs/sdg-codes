@@ -1,10 +1,10 @@
 source "https://rubygems.org"
 
-ruby "2.5.1"
+ruby "2.6.5"
 
-gem "rails", "~> 5.2"
-gem "pg", "~> 1.0"
-gem "puma", "~> 3"
+gem "rails", "~> 6.0"
+gem "pg"
+gem "puma"
 
 gem "omniauth"
 gem "omniauth-google-oauth2"
