@@ -26,7 +26,7 @@ class HomeController < ApplicationController
         redirect_to @link.url
       end
     else
-      redirect_to "https://suncoast.io"
+      redirect_to '/not_found'
     end
   end
 end
