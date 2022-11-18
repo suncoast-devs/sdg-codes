@@ -1,0 +1,12 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+
+AllCops:
+  NewCops: enable
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

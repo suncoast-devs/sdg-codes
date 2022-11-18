@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module API
   class LinksController < ActionController::API
     before_action :authenticate!
@@ -7,12 +9,12 @@ module API
 
       if @link.save
         render json: {
-          url: short_url(@link.slug),
+          url: short_url(@link.slug)
         }
       else
         render json: {
-                 errors: @link.errors,
-               }
+          errors: @link.errors
+        }
       end
     end
 
@@ -28,7 +30,7 @@ module API
 
     def authenticated_user
       @authenticated_user ||= begin
-        token = request.headers["Authorization"]&.split(" ")&.last
+        token = request.headers['Authorization']&.split(' ')&.last
         User.from_api_key(token) if token
       end
     end

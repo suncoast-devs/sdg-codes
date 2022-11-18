@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
-  has_many :links
+  has_many :links, dependent: :destroy
 
   def self.from_auth_hash(auth)
-    return unless auth.info.email =~ /@suncoast.io$/
+    return unless /@suncoast.io$/.match?(auth.info.email)
+
     where(uid: auth.uid).first_or_initialize.tap do |user|
       user.uid = auth.uid
       user.name = auth.info.name

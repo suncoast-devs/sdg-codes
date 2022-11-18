@@ -7,10 +7,10 @@ class LinksController < ApplicationController
   # GET /links
   def index
     scope = case params[:f]
-      when 'all' then Link.all
-      when 'system' then Link.joins(:user).where(users: {email: 'hello@suncoast.io'})
-      else Link.where(user: current_user)
-    end
+            when 'all' then Link.all
+            when 'system' then Link.joins(:user).where(users: { email: 'hello@suncoast.io' })
+            else Link.where(user: current_user)
+            end
 
     @pagy, @links = pagy(scope.order(created_at: :desc))
   end
@@ -31,7 +31,7 @@ class LinksController < ApplicationController
     @link = current_user.links.new(link_params)
 
     if @link.save
-      redirect_to @link, notice: "Link was successfully created."
+      redirect_to @link, notice: 'Link was successfully created.'
     else
       render :new
     end
@@ -40,7 +40,7 @@ class LinksController < ApplicationController
   # PATCH/PUT /links/1
   def update
     if @link.update(link_params)
-      redirect_to @link, notice: "Link was successfully updated."
+      redirect_to @link, notice: 'Link was successfully updated.'
     else
       render :edit
     end
@@ -49,7 +49,7 @@ class LinksController < ApplicationController
   # DELETE /links/1
   def destroy
     @link.destroy
-    redirect_to links_url, notice: "Link was successfully destroyed."
+    redirect_to links_url, notice: 'Link was successfully destroyed.'
   end
 
   private

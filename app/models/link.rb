@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Link < ApplicationRecord
   belongs_to :user
-  has_many :clicks
+  has_many :clicks, dependent: :destroy
 
   validates :label, presence: true
   validates :slug, presence: true, uniqueness: true
@@ -11,7 +13,7 @@ class Link < ApplicationRecord
   def self.generate_unique_slug
     loop do
       slug = SecureRandom.base58(3)
-      break slug unless Link.where(slug: slug).exists?
+      break slug unless Link.exists?(slug:)
     end
   end
 
