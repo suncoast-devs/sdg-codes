@@ -1,3 +1,3 @@
-** Short URLs **
+# Short URLs
 
-At [https://sdg.codes/](sdg.codes).
+At [sdg.codes](https://sdg.codes/).
