@@ -32,7 +32,8 @@ html
                     = link_to "Sign Out", sign_out_path, class: "button is-primary"
                 - else
                   p.control
-                    = link_to "Sign In", sign_in_path, class: "button is-primary"
+                    = form_tag(sign_in_path, method: 'post') do
+                      button.button.is-primary type='submit' Sign In
 
     section.section
       .container

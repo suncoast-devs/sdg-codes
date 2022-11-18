@@ -11,6 +11,7 @@ gem 'puma'
 
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 gem 'pagy'
 gem 'slim'
 gem 'user_agent_parser'
